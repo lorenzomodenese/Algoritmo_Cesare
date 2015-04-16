@@ -1,9 +1,35 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+from Server import Server
+from Decoder import Decoder
+import os
 
-__author__ = "Luca"
-__date__ = "$15-apr-2015 17.51.59$"
+s = Server.initServerSocket()
+print "Running and waiting..."
 
-if __name__ == "__main__":
-    print "Hello World"
+while True:
+    clientSocket, address = s.accept()
+    
+    pid = os.fork()
+    
+    if(pid == 0):
+        
+        print "Receiving data..."
+        
+        try:
+            s.close()
+            
+            encoded_text = Server.readSocket(clientSocket)
+            
+            print "Decoding data..."
+            
+            Decoder.decode(encoded_text)
+            
+        except Exception as e:
+            print e
+            print("Error!")
+            
+        finally:
+            clientSocket.close()
+            os._exit(0)
+        
+    else:
+        clientSocket.close()
