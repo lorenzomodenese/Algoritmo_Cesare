@@ -1,5 +1,3 @@
-import operator
-from audioop import reverse
 
 class Frequency:
     

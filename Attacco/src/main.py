@@ -2,6 +2,11 @@ from Server import Server
 from Decoder import Decoder
 import os
 
+Decoder.decode("testo.txt")
+print "Dopo decoder testo.txt"
+
+encoded_file = "encoded_text.txt"
+
 s = Server.initServerSocket()
 print "Running and waiting..."
 
@@ -19,9 +24,15 @@ while True:
             
             encoded_text = Server.readSocket(clientSocket)
             
+            file = open(encoded_file, "w")
+            
+            file.write(encoded_text)
+            
+            file.close()
+            
             print "Decoding data..."
             
-            Decoder.decode(encoded_text)
+            Decoder.decode(encoded_file)
             
         except Exception as e:
             print e
