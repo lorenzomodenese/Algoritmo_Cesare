@@ -54,6 +54,20 @@ class Decoder:
             key = standard_ascii - text_ascii
         else:
             key = text_ascii - standard_ascii
+        
+        #correggere uso pop
+        confidence = text_value
+        standard_temp = list(sorted_standard_frequency) 
+        text_temp = list(sorted_text_frequency)   
+        for f in standard_temp:
+            standard_char, standard_value = f
+            decodedKey = chr(ord(char) + key)
+            text_char, text_value=text_temp.pop(0)
+            if (text_char==decodedKey):
+                confidence = confidence + text_value
+        
+        print "Encryption key found: ", key, " confidence value : ", confidence, "."
+            
             
         file = open(encoded_file, "r")
         decrypted = open(DECODED_FILE, "w")
