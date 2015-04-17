@@ -5,7 +5,7 @@ ip=raw_input("Inserire indirizzo ip del server: ")
 nome_file=raw_input("Inserire nome del file: ")
 
 clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-clientsocket.connect((ip, 9093))
+clientsocket.connect((ip, 2020))
 
 file = open(nome_file, "r")
 
