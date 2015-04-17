@@ -1,11 +1,7 @@
 from Server import Server
 from Decoder import Decoder
 import os
-
-Decoder.decode("cifrato.txt")
-print "Dopo decoder testo.txt"
-
-encoded_file = "encoded_text.txt"
+import Util
 
 s = Server.initServerSocket()
 print "Running and waiting..."
@@ -24,7 +20,7 @@ while True:
             
             encoded_text = Server.readSocket(clientSocket)
             
-            file = open(encoded_file, "w")
+            file = open(Util.ENCODED_FILE, "w")
             
             file.write(encoded_text)
             
@@ -32,7 +28,7 @@ while True:
             
             print "Decoding data..."
             
-            Decoder.decode(encoded_file)
+            Decoder.decode()
             
         except Exception as e:
             print e

@@ -1,23 +1,18 @@
 from Frequency import Frequency
 import operator
 from audioop import reverse
+import Util
 
-class Decoder:
-    
-    global FILE_NAME
-    FILE_NAME = "english.txt"
-    
-    global DECODED_FILE
-    DECODED_FILE = "decoded_file.txt"
+class Decoder:   
 
     @staticmethod
-    def decode(encoded_file):
+    def decode():
         
-        standard_frequency = Frequency.get(FILE_NAME)
+        standard_frequency = Frequency.get(Util.FILE_NAME)
 
         text_frequency = standard_frequency.fromkeys(standard_frequency.keys(), float(0))
         
-        file = open(encoded_file, "r")
+        file = open(Util.ENCODED_FILE, "r")
         
         numchar = 0
         c = file.read(1)
@@ -115,8 +110,8 @@ class Decoder:
                         print "Key index incorrect, please insert a number!"
                 
             
-        file = open(encoded_file, "r")
-        decrypted = open(DECODED_FILE, "w")
+        file = open(Util.ENCODED_FILE, "r")
+        decrypted = open(Util.DECODED_FILE, "w")
         encoded_character = file.read(1)
         while encoded_character != '':
             
