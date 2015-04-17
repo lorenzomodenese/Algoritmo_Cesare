@@ -2,7 +2,7 @@ from Server import Server
 from Decoder import Decoder
 import os
 
-Decoder.decode("testo.txt")
+Decoder.decode("cifrato.txt")
 print "Dopo decoder testo.txt"
 
 encoded_file = "encoded_text.txt"
