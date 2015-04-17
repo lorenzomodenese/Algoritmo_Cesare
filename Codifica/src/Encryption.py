@@ -12,17 +12,25 @@ def cifratura(carattere, key):
     return cif
 
 def calcolaChiave(chiave):
-    print int(chiave)%26
     return int(chiave)%26
 
-print "CIFRATURA DEL TESTO (CIFRARIO DI CESARE)\n"
+print "********************************************"
+print "* CIFRATURA DEL TESTO (CIFRARIO DI CESARE) *"
+print "********************************************"
 
 #inserimento file inpiut
-chiave = raw_input("Inserire la chiave (esc per uscire): ")
-if chiave=="esc":
-    sys.exit()
+while 1:
+    chiave = raw_input("Inserire la chiave (esc per uscire): ")
+    key=calcolaChiave(chiave)
+    if chiave=="esc":
+        sys.exit()
+    if int(chiave) <=0 or key==0:
+        print "Chiave errata (si richiede una chiave positiva >0 e non multipla di 26)"
+    else:
+        break
+
 file_name = raw_input("Inserire il file da cifrare: ")
-key=calcolaChiave(chiave)
+
 
 #apro il file e ne leggo un po alla volta 
 file = open(file_name, "r")
@@ -30,7 +38,7 @@ cifrato = open("cifrato.txt", "w")
 while 1: 
     carattere = file.read(1) 
     if carattere == "": 
-        print "Fine file"
+        print "Fine cifratura"
         break
     lettera_cifrata = cifratura(carattere,key)
     cifrato.write(chr(int(lettera_cifrata)))  #convertiamo in carattere il numero ascii
