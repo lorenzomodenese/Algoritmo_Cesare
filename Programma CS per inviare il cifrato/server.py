@@ -15,7 +15,7 @@ print "Avvio server, pronto a ricevere un file"
 while 1:
     sapp, addr = sock.accept()
     print "Ricevuta richiesta",
-    file = open("PROVA.txt", 'wb')
+    file = open("cifrato.txt", 'wb')
     try:
         while 1:
             data = sapp.recv(1024*1)
