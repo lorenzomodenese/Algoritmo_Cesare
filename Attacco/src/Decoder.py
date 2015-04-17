@@ -33,11 +33,12 @@ class Decoder:
                 
         for f in text_frequency:
             text_frequency[f] = 100 * text_frequency[f] / numchar
-            print f, text_frequency[f]
+            #print f, text_frequency[f]
         
         sorted_standard_frequency = sorted(standard_frequency.items(), key=operator.itemgetter(1), reverse=True)
         sorted_text_frequency = sorted(text_frequency.items(), key=operator.itemgetter(1), reverse=True)
-        print sorted_standard_frequency
+        #print sorted_standard_frequency
+        #print sorted_text_frequency
         
         keys = []
         list_index = 0
@@ -51,20 +52,18 @@ class Decoder:
             standard_ascii = ord(standard_character)
             text_ascii = ord(text_character)
             
-            if standard_ascii > text_ascii:
-                key_value = standard_ascii - text_ascii
-            else:
-                key_value = text_ascii - standard_ascii
+            
+            key_value = text_ascii - standard_ascii
+            
+            if key_value < 0:
+                key_value = key_value + 26
             
             found_key = False
-            for key, key_confidence in keys:
-                print "Dentro for in key"
+            for key, key_confidence in keys:                
                 if key_value == key:
-                    found_key = True
-                    print "key found!"
+                    found_key = True                    
             
-            if not found_key:
-                print "key not found"
+            if not found_key:                
                 keys.insert(len(keys), (key_value, 0))
                 
                 key_value, key_confidence = keys[len(keys) - 1]

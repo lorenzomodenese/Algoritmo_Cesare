@@ -13,5 +13,11 @@ class Server:
     
     @staticmethod
     def readSocket(clientSocket):
-        string = clientSocket.recv(Util.SIZE)
-        return string
+        text =""
+        
+        while True:
+            string = clientSocket.recv(Util.SIZE)
+            if not string:
+                break
+            text = text + string
+        return text

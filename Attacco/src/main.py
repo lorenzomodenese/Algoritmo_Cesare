@@ -7,6 +7,7 @@ s = Server.initServerSocket()
 print "Running and waiting..."
 
 while True:
+    
     clientSocket, address = s.accept()
     
     pid = os.fork()
@@ -29,6 +30,9 @@ while True:
             print "Decoding data..."
             
             Decoder.decode()
+            
+            print "File successfully decoded!"
+            print "\nRunning and waiting..."
             
         except Exception as e:
             print e
