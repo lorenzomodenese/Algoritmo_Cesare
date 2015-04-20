@@ -1,5 +1,5 @@
 #!/bin/bash
-#questo file configura le reti virtuali per il pc server, client e sniffing. Cambiare solo l'indirizo di rete inserito da parametro che devono essere diversi
+#questo file configura le reti virtuali per il pc server (.2.2), client(.1.2) e sniffing. Cambiare solo l'indirizo di rete inserito da parametro che devono essere diversi
 
 #ricevo come parametro l'indirizzo dell'host della rete e l'interfaccia
 case $# in
