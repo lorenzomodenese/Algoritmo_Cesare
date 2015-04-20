@@ -45,7 +45,7 @@ class Decoder:
         index_key = 0
         while index_key == 0:
             
-            standard_character, standard_value = sorted_standard_frequency[list_index]
+            standard_character, standard_value = sorted_standard_frequency[0]
             text_character, text_value = sorted_text_frequency[list_index]
             list_index = list_index + 1
             
